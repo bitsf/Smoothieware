@@ -1,4 +1,4 @@
-PROJECT=main
+PROJECT=firmware
 BUILD_DIR=../build
 DEVICES=lpc1768
 

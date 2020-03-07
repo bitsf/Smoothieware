@@ -24,6 +24,7 @@
 #include "arm_solutions/HBotSolution.h"
 #include "arm_solutions/CoreXZSolution.h"
 #include "arm_solutions/MorganSCARASolution.h"
+#include "arm_solutions/DarmSolution.h"
 #include "StepTicker.h"
 #include "checksumm.h"
 #include "utils.h"
@@ -70,6 +71,7 @@
 #define  corexz_checksum                     CHECKSUM("corexz")
 #define  kossel_checksum                     CHECKSUM("kossel")
 #define  morgan_checksum                     CHECKSUM("morgan")
+#define  darm_checksum                     CHECKSUM("darm")
 
 // new-style actuator stuff
 #define  actuator_checksum                   CHEKCSUM("actuator")
@@ -100,8 +102,8 @@
 
 #define PI 3.14159265358979323846F // force to be float, do not use M_PI
 
-//#define DEBUG_PRINTF THEKERNEL->streams->printf
-#define DEBUG_PRINTF(...)
+#define DEBUG_PRINTF THEKERNEL->streams->printf
+//#define DEBUG_PRINTF(...)
 
 // The Robot converts GCodes into actual movements, and then adds them to the Planner, which passes them to the Conveyor so they can be added to the queue
 // It takes care of cutting arcs into segments, same thing for line that are too long
@@ -175,6 +177,9 @@ void Robot::load_config()
     } else if(solution_checksum == cartesian_checksum) {
         this->arm_solution = new CartesianSolution(THEKERNEL->config);
 
+    } else if(solution_checksum == darm_checksum) {
+        this->arm_solution = new DarmSolution(THEKERNEL->config);
+
     } else {
         this->arm_solution = new CartesianSolution(THEKERNEL->config);
     }
@@ -201,6 +206,7 @@ void Robot::load_config()
         // optional setting for a fixed G92 offset
         std::vector<float> t= parse_number_list(g92.c_str());
         if(t.size() == 3) {
+            DEBUG_PRINTF("g92_offset...\n");
             g92_offset = wcs_t(t[0], t[1], t[2]);
         }
     }
