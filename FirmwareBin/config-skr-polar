@@ -5,28 +5,36 @@
 ## Robot module configurations : general handling of movement G-codes and slicing into moves
 
 
-
-# Delta configuration
-
-# See http://smoothieware.org/delta
-
-arm_solution                                 cartesian     # 笛卡尔    
+arm_solution                                 polargraph
+polar_left                                   40.0
+polar_right                                  650.0
+polar_top                                    30.0
 
 
+switch.pen.enable                            true             
+switch.pen.input_on_command                  M111             
+switch.pen.input_off_command                 M110             
+switch.pen.output_pin                        2.0              
+switch.pen.startup_value                     3              
+switch.pen.default_on_value                  5              
+switch.pen.startup_state                     false              
+switch.pen.output_type                       hwpwm  # 2.5 - 12.5
+switch.pen.pwm_period_ms                     20.0
 
-extruder.hotend.enable                          true          # 使能挤出机，如果为false，相关的配置都将被忽略
+
+extruder.hotend.enable                          false          # 使能挤出机，如果为false，相关的配置都将被忽略
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
 
 # See http://smoothieware.org/stepper-motors
 
-alpha_steps_per_mm                           80              # X轴运动1mm需要的步进数
+alpha_steps_per_mm                           80              # X轴运动1mm需要的步进数, 16 * 200 / (20 * 2)
 
 beta_steps_per_mm                            80              # Y轴
 
-gamma_steps_per_mm                           400             # Z轴
+gamma_steps_per_mm                          400              # Z轴
 
-extruder.hotend.steps_per_mm                 100              # E轴运动1mm需要的步进数
+extruder.hotend.steps_per_mm                100              # E轴运动1mm需要的步进数
 
 
 
@@ -36,14 +44,14 @@ x_axis_max_speed                             12000            # X轴最大移动
 
 y_axis_max_speed                             12000            # Y轴
 
-z_axis_max_speed                             150              # Z轴
+z_axis_max_speed                             12000            # Z轴
 
 
 alpha_max_rate                               12000.0          # X轴最大速率 mm/min
 
 beta_max_rate                                12000.0          # Maxmimum rate in mm/min
 
-gamma_max_rate                               150.0            # Maximum rate in mm/min
+gamma_max_rate                               12000.0            # Maximum rate in mm/min
 
 
 # Basic motion configuration
@@ -96,9 +104,9 @@ extruder.hotend.step_pin                     2.13              # 挤出的step s
 
 alpha_dir_pin                                2.6              # X轴的方向stepper direction管脚, add '!' to 翻转电机运转方向
 
-beta_dir_pin                                 0.20             # Pin for beta stepper direction, add '!' to reverse direction
+beta_dir_pin                                 0.20!             # Pin for beta stepper direction, add '!' to reverse direction
 
-gamma_dir_pin                                2.11!             # Pin for gamma stepper direction, add '!' to reverse direction
+gamma_dir_pin                                2.11             # Pin for gamma stepper direction, add '!' to reverse direction
 
 extruder.hotend.dir_pin                      0.11    	      # 挤出的方向dir signal管脚 ( add '!' to 翻转电机运转方向)
 
@@ -112,7 +120,7 @@ gamma_en_pin                                 0.21             # Pin for gamma en
 extruder.hotend.en_pin                       2.12             # 挤出的使能信号
 
 
-alpha_current                                0.9              # X轴驱动电流
+alpha_current                                0.9              # X轴驱动电流，1A / 1.41 * 2.5 / 1.77 * 90%
 
 beta_current                                 0.9              # Y stepper motor current
 
@@ -173,7 +181,7 @@ laser_module_enable                           false           # false失能激�
 
 # First hotend configuration
 
-temperature_control.hotend.enable            true             # 使能hotend
+temperature_control.hotend.enable            false             # 使能hotend
 
 temperature_control.hotend.thermistor_pin    0.24             # 热敏电阻连接的管脚
 
@@ -225,7 +233,7 @@ temperature_control.hotend.d_factor         114               # D ( derivative )
 
 
 
-temperature_control.bed.enable               true             # 使能热床
+temperature_control.bed.enable               false             # 使能热床
 
 temperature_control.bed.thermistor_pin       0.23             # 热敏电阻连接的管脚
 
@@ -257,7 +265,7 @@ temperature_control.bed.runaway_range                0   # How far from the set 
 
 # Switch module for fan control
 
-switch.fan.enable                            true             # 使能风扇
+switch.fan.enable                            false             # 使能风扇
 
 switch.fan.input_on_command                  M106             # 开风扇的M-code
 
@@ -277,7 +285,7 @@ switch.fan.max_pwm                           255              # Set max pwm for 
 
 # See http://smoothieware.org/endstops
 
-endstops_enable                              true             # 使能限位开关
+endstops_enable                              false             # 使能限位开关
 
 cartesian_homing                             true             # 使能G28归零
 
@@ -367,7 +375,7 @@ gamma_trim                                    0                # Software trim f
 
 # See http://smoothieware.org/zprobe
 
-zprobe.enable                                true            # 使能zprobe
+zprobe.enable                                false            # 使能zprobe
 
 zprobe.probe_pin                             1.29!^          # Pin probe is attached to, if NC remove the !
 
@@ -404,11 +412,11 @@ zprobe.probe_height                          10               # How much above b
 # leveling-strategy.delta-grid.save                 true    # 
 # leveling-strategy.delta-grid.initial_height       10       # 
 
-leveling-strategy.three-point-leveling.enable		true		Set to true to enable the leveling strategy that probes three points to define a plane and then keeps the Z parallel to that plane. This is useful if your Z plate/bed is not perfectly aligned with your XY gantry	
+leveling-strategy.three-point-leveling.enable		false		Set to true to enable the leveling strategy that probes three points to define a plane and then keeps the Z parallel to that plane. This is useful if your Z plate/bed is not perfectly aligned with your XY gantry	
 leveling-strategy.three-point-leveling.point1		100.0,0.0		The first probe point (X, Y)	
 leveling-strategy.three-point-leveling.point2		200.0,200.0		The second probe point (X, Y)	
 leveling-strategy.three-point-leveling.point3		0.0,200.0		The third probe point (X, Y)	
-leveling-strategy.three-point-leveling.home_first	true		Home the X and Y axes before probing	
+leveling-strategy.three-point-leveling.home_first	false		Home the X and Y axes before probing	
 leveling-strategy.three-point-leveling.tolerance	0.03		The probe tolerance in millimetres, anything less that this will be ignored, default is 0.03mm	
 leveling-strategy.three-point-leveling.probe_offsets	0,0,0		The probe offset from nozzle, must be X,Y,Z (Z should always be 0), default is no offset. This is used if your nozzle is not exactly at the same position as where your tool would be.	
 leveling-strategy.three-point-leveling.save_plane	false		
@@ -421,7 +429,7 @@ leveling-strategy.three-point-leveling.save_plane	false
 
 # Please find your panel on the wiki and copy/paste the right configuration here
 
-panel.enable                                 true             # 使能显示屏设置
+panel.enable                                 false             # 使能显示屏设置
 
 
 

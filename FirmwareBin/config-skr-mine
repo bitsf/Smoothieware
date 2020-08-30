@@ -12,32 +12,32 @@ base_offset                                  41.0
 base_height                                  0
 
 
-extruder.hotend.enable                          false          # Ê¹ÄÜ¼·³ö»ú£¬Èç¹ûÎªfalse£¬Ïà¹ØµÄÅäÖÃ¶¼½«±»ºöÂÔ
+extruder.hotend.enable                          false          # ä½¿èƒ½æŒ¤å‡ºæœºï¼Œå¦‚æœä¸ºfalseï¼Œç›¸å…³çš„é…ç½®éƒ½å°†è¢«å¿½ç•¥
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
 
 # See http://smoothieware.org/stepper-motors
 
-alpha_steps_per_mm                          2597.408715              # XÖáÔË¶¯1 »¡¶È²½Êı£¬200 * 16 * 5.1 / 2 / pi
+alpha_steps_per_mm                          2597.408715              # Xè½´è¿åŠ¨1 å¼§åº¦æ­¥æ•°ï¼Œ200 * 16 * 5.1 / 2 / pi
 
-beta_steps_per_mm                           2597.408715              # YÖá
+beta_steps_per_mm                           2597.408715              # Yè½´
 
-gamma_steps_per_mm                          2597.408715              # ZÖá
+gamma_steps_per_mm                          2597.408715              # Zè½´
 
-extruder.hotend.steps_per_mm                 100              # EÖáÔË¶¯1mmĞèÒªµÄ²½½øÊı
+extruder.hotend.steps_per_mm                 100              # Eè½´è¿åŠ¨1mméœ€è¦çš„æ­¥è¿›æ•°
 
 
 
 # Cartesian axis speed limits
 
-x_axis_max_speed                             12000            # XÖá×î´óÒÆ¶¯ËÙÂÊ mm/min
+x_axis_max_speed                             12000            # Xè½´æœ€å¤§ç§»åŠ¨é€Ÿç‡ mm/min
 
-y_axis_max_speed                             12000            # YÖá
+y_axis_max_speed                             12000            # Yè½´
 
-z_axis_max_speed                             12000              # ZÖá
+z_axis_max_speed                             12000              # Zè½´
 
 
-alpha_max_rate                               12000.0          # XÖá×î´óËÙÂÊ mm/min
+alpha_max_rate                               12000.0          # Xè½´æœ€å¤§é€Ÿç‡ mm/min
 
 beta_max_rate                                12000.0          # Maxmimum rate in mm/min
 
@@ -46,11 +46,11 @@ gamma_max_rate                               12000.0            # Maximum rate i
 
 # Basic motion configuration
 
-default_feed_rate                            2400             # G1/G2/G3µÄÄ¬ÈÏËÙÂÊ(mm/minute)
+default_feed_rate                            2400             # G1/G2/G3çš„é»˜è®¤é€Ÿç‡(mm/minute)
 
-default_seek_rate                            2400             # G0µÄÄ¬ÈÏËÙÂÊ (mm/minute)
+default_seek_rate                            2400             # G0çš„é»˜è®¤é€Ÿç‡ (mm/minute)
 
-mm_per_arc_segment                           0.5              # Ô²»¡·Ö¶ÎµÄ¹Ì¶¨³¤¶È, 0 to disable
+mm_per_arc_segment                           0.5              # åœ†å¼§åˆ†æ®µçš„å›ºå®šé•¿åº¦, 0 to disable
 
 mm_max_arc_error                             0.01             # The maximum error for line segments that divide arcs 0 to disable
 
@@ -65,9 +65,9 @@ mm_max_arc_error                             0.01             # The maximum erro
 
 # See http://smoothieware.org/motion-control
 
-acceleration                                 3000             # ¼ÓËÙ¶È mm/s^2
+acceleration                                 3000             # åŠ é€Ÿåº¦ mm/s^2
 
-#z_acceleration                              500              # ZÖá¼ÓËÙ¶È mm/s^2, 0 uses acceleration which is the default. DO NOT SET ON A DELTA
+#z_acceleration                              500              # Zè½´åŠ é€Ÿåº¦ mm/s^2, 0 uses acceleration which is the default. DO NOT SET ON A DELTA
 
 junction_deviation                           0.05             # See http://smoothieware.org/motion-control#junction-deviation
 
@@ -83,40 +83,40 @@ junction_deviation                           0.05             # See http://smoot
 
 # See http://smoothieware.org/pin-configuration and http://smoothieware.org/pinout
 
-alpha_step_pin                               2.2              # XÖáµÄstep signal¹Ü½Å
+alpha_step_pin                               2.2              # Xè½´çš„step signalç®¡è„š
 
 beta_step_pin                                0.19              # Pin for beta stepper step signal
 
 gamma_step_pin                               0.22              # Pin for gamma stepper step signal
 
-extruder.hotend.step_pin                     2.13              # ¼·³öµÄstep signal¹Ü½Å
+extruder.hotend.step_pin                     2.13              # æŒ¤å‡ºçš„step signalç®¡è„š
 
 
-alpha_dir_pin                                2.6!              # XÖáµÄ·½Ïòstepper direction¹Ü½Å, add '!' to ·­×ªµç»úÔË×ª·½Ïò
+alpha_dir_pin                                2.6!              # Xè½´çš„æ–¹å‘stepper directionç®¡è„š, add '!' to ç¿»è½¬ç”µæœºè¿è½¬æ–¹å‘
 
 beta_dir_pin                                 0.20             # Pin for beta stepper direction, add '!' to reverse direction
 
 gamma_dir_pin                                2.11             # Pin for gamma stepper direction, add '!' to reverse direction
 
-extruder.hotend.dir_pin                      0.11    	      # ¼·³öµÄ·½Ïòdir signal¹Ü½Å ( add '!' to ·­×ªµç»úÔË×ª·½Ïò)
+extruder.hotend.dir_pin                      0.11    	      # æŒ¤å‡ºçš„æ–¹å‘dir signalç®¡è„š ( add '!' to ç¿»è½¬ç”µæœºè¿è½¬æ–¹å‘)
 
 
-alpha_en_pin                                 2.1              # XÖáÊ¹ÄÜ¹Ü½Å
+alpha_en_pin                                 2.1              # Xè½´ä½¿èƒ½ç®¡è„š
 
 beta_en_pin                                  2.8             # Pin for beta enable
 
 gamma_en_pin                                 0.21             # Pin for gamma enable
 
-extruder.hotend.en_pin                       2.12             # ¼·³öµÄÊ¹ÄÜĞÅºÅ
+extruder.hotend.en_pin                       2.12             # æŒ¤å‡ºçš„ä½¿èƒ½ä¿¡å·
 
 
-alpha_current                                0.9              # XÖáÇı¶¯µçÁ÷£¬1A / 1.41 * 2.5 / 1.77 * 90%
+alpha_current                                0.9              # Xè½´é©±åŠ¨ç”µæµï¼Œ1A / 1.41 * 2.5 / 1.77 * 90%
 
 beta_current                                 0.9              # Y stepper motor current
 
 gamma_current                                0.9              # Z stepper motor current
 
-delta_current                                0.9              # ¼·³ö»ú1µÄÇı¶¯µçÁ÷
+delta_current                                0.9              # æŒ¤å‡ºæœº1çš„é©±åŠ¨ç”µæµ
 
 
 
@@ -124,11 +124,11 @@ delta_current                                0.9              # ¼·³ö»ú1µÄÇı¶¯µçÁ
 
 # See http://smoothieware.org/extruder
 
-extruder.hotend.default_feed_rate               600           # ¼·³öµÄÄ¬ÈÏËÙÂÊ ( mm/minute )
+extruder.hotend.default_feed_rate               600           # æŒ¤å‡ºçš„é»˜è®¤é€Ÿç‡ ( mm/minute )
 
-extruder.hotend.acceleration                    10000         # ¼·³öµÄ¼ÓËÙ¶Èmm/s^2
+extruder.hotend.acceleration                    10000         # æŒ¤å‡ºçš„åŠ é€Ÿåº¦mm/s^2
 
-extruder.hotend.max_speed                       80            # ×î´ó¼·³öËÙ¶È mm/s
+extruder.hotend.max_speed                       80            # æœ€å¤§æŒ¤å‡ºé€Ÿåº¦ mm/s
 
 
 
@@ -159,7 +159,7 @@ extruder.hotend.max_speed                       80            # ×î´ó¼·³öËÙ¶È mm/
 
 
 
-laser_module_enable                           false           # falseÊ§ÄÜ¼¤¹âÄ£Ê½
+laser_module_enable                           false           # falseå¤±èƒ½æ¿€å…‰æ¨¡å¼
 
 
 
@@ -171,25 +171,25 @@ laser_module_enable                           false           # falseÊ§ÄÜ¼¤¹âÄ£Ê
 
 # First hotend configuration
 
-temperature_control.hotend.enable            true             # Ê¹ÄÜhotend
+temperature_control.hotend.enable            true             # ä½¿èƒ½hotend
 
-temperature_control.hotend.thermistor_pin    0.24             # ÈÈÃôµç×èÁ¬½ÓµÄ¹Ü½Å
+temperature_control.hotend.thermistor_pin    0.24             # çƒ­æ•ç”µé˜»è¿æ¥çš„ç®¡è„š
 
-temperature_control.hotend.heater_pin        2.7              # ¼ÓÈÈ°ôÁ¬½ÓµÄ¹Ü½Å, Èç¹û²»ĞèÒªÉèÖÃÎª nc 
+temperature_control.hotend.heater_pin        2.7              # åŠ çƒ­æ£’è¿æ¥çš„ç®¡è„š, å¦‚æœä¸éœ€è¦è®¾ç½®ä¸º nc 
 
 temperature_control.hotend.thermistor        EPCOS100K        # See http://smoothieware.org/temperaturecontrol#toc5
 
 #temperature_control.hotend.beta             4066             # Or set the beta value
 
-temperature_control.hotend.set_m_code        104              # ÉèÖÃÎÂ¶ÈµÄM-code
+temperature_control.hotend.set_m_code        104              # è®¾ç½®æ¸©åº¦çš„M-code
 
-temperature_control.hotend.set_and_wait_m_code 109            # ÉèÖÃ²¢ÇÒµÈ´ıÎÂ¶È´ïµ½Ä¿±êµÄM-code
+temperature_control.hotend.set_and_wait_m_code 109            # è®¾ç½®å¹¶ä¸”ç­‰å¾…æ¸©åº¦è¾¾åˆ°ç›®æ ‡çš„M-code
 
-temperature_control.hotend.designator        T                # Õâ¸öÄ£¿éµÄÃû³Æ
+temperature_control.hotend.designator        T                # è¿™ä¸ªæ¨¡å—çš„åç§°
 
-#temperature_control.hotend.max_temp         300              # ×î´óÎÂ¶È£¬Ä¬ÈÏÎª300
+#temperature_control.hotend.max_temp         300              # æœ€å¤§æ¸©åº¦ï¼Œé»˜è®¤ä¸º300
 
-#temperature_control.hotend.min_temp         0                # ×îĞ¡ÎÂ¶È
+#temperature_control.hotend.min_temp         0                # æœ€å°æ¸©åº¦
 
 
 
@@ -201,7 +201,7 @@ temperature_control.hotend.runaway_heating_timeout      0  # How long it can tak
 
 temperature_control.hotend.runaway_cooling_timeout      0  # How long it can take to cool down if temp is set lower, max is 2040 seconds
 
-temperature_control.hotend.runaway_range                0   # How far from the set temperature it can wander, max setting is 63Â°C
+temperature_control.hotend.runaway_range                0   # How far from the set temperature it can wander, max setting is 63æ³C
 
 
 
@@ -223,25 +223,25 @@ temperature_control.hotend.d_factor         114               # D ( derivative )
 
 
 
-temperature_control.bed.enable               true             # Ê¹ÄÜÈÈ´²
+temperature_control.bed.enable               true             # ä½¿èƒ½çƒ­åºŠ
 
-temperature_control.bed.thermistor_pin       0.23             # ÈÈÃôµç×èÁ¬½ÓµÄ¹Ü½Å
+temperature_control.bed.thermistor_pin       0.23             # çƒ­æ•ç”µé˜»è¿æ¥çš„ç®¡è„š
 
-temperature_control.bed.heater_pin           2.5              # ¼ÓÈÈÈÈ´²µÄ¹Ü½Å
+temperature_control.bed.heater_pin           2.5              # åŠ çƒ­çƒ­åºŠçš„ç®¡è„š
 
 temperature_control.bed.thermistor           EPCOS100K	      # See http://smoothieware.org/temperaturecontrol#thermistor
 
-temperature_control.bed.set_m_code           140              # ÉèÖÃÈÈ´²Ä¿±êÎÂ¶ÈµÄM-code
+temperature_control.bed.set_m_code           140              # è®¾ç½®çƒ­åºŠç›®æ ‡æ¸©åº¦çš„M-code
 
-temperature_control.bed.set_and_wait_m_code  190              # ÉèÖÃ²¢µÈ´ıÈÈ´²´ïµ½Ä¿±êÎÂ¶ÈµÄM-code
+temperature_control.bed.set_and_wait_m_code  190              # è®¾ç½®å¹¶ç­‰å¾…çƒ­åºŠè¾¾åˆ°ç›®æ ‡æ¸©åº¦çš„M-code
 
-temperature_control.bed.designator           B                # ÈÈ´²µÄÃû³Æ
+temperature_control.bed.designator           B                # çƒ­åºŠçš„åç§°
 
 temperature_control.bed.runaway_heating_timeout      0  # How long it can take to heat up, max is 2040 seconds.
 
 temperature_control.bed.runaway_cooling_timeout      0  # How long it can take to cool down if temp is set lower, max is 2040 seconds
 
-temperature_control.bed.runaway_range                0   # How far from the set temperature it can wander, max setting is 63Â°C
+temperature_control.bed.runaway_range                0   # How far from the set temperature it can wander, max setting is 63æ³C
 
 
 
@@ -255,13 +255,13 @@ temperature_control.bed.runaway_range                0   # How far from the set 
 
 # Switch module for fan control
 
-switch.fan.enable                            true             # Ê¹ÄÜ·çÉÈ
+switch.fan.enable                            true             # ä½¿èƒ½é£æ‰‡
 
-switch.fan.input_on_command                  M106             # ¿ª·çÉÈµÄM-code
+switch.fan.input_on_command                  M106             # å¼€é£æ‰‡çš„M-code
 
-switch.fan.input_off_command                 M107             # ¹Ø·çÉÈµÄM-code
+switch.fan.input_off_command                 M107             # å…³é£æ‰‡çš„M-code
 
-switch.fan.output_pin                        2.3              # Á¬½Ó·çÉÈµÄ¹Ü½Å
+switch.fan.output_pin                        2.3              # è¿æ¥é£æ‰‡çš„ç®¡è„š
 
 switch.fan.output_type                       pwm              # PWM output settable with S parameter in the input_on_comand
 
@@ -275,9 +275,9 @@ switch.fan.max_pwm                           255              # Set max pwm for 
 
 # See http://smoothieware.org/endstops
 
-endstops_enable                              false             # Ê¹ÄÜÏŞÎ»¿ª¹Ø
+endstops_enable                              false             # ä½¿èƒ½é™ä½å¼€å…³
 
-cartesian_homing                             true             # Ê¹ÄÜG28¹éÁã
+cartesian_homing                             true             # ä½¿èƒ½G28å½’é›¶
 
 alpha_min_endstop                            1.29^               # Pin to read min endstop, add a ! to invert if endstop is NO connected to ground
 
@@ -307,7 +307,7 @@ gamma_min                                    0
 gamma_max                                    500
   
 
-alpha_max_travel                             1000             # ¹éÁãÊ±XÖáÒÆ¶¯µÄ×î´ó¾àÀëmm
+alpha_max_travel                             1000             # å½’é›¶æ—¶Xè½´ç§»åŠ¨çš„æœ€å¤§è·ç¦»mm
 
 beta_max_travel                              1000             # 
 
@@ -317,7 +317,7 @@ gamma_max_travel                             1000             #
 
 # Endstops home at their fast feedrate first, then once the endstop is found they home again at their slow feedrate for accuracy
 
-alpha_fast_homing_rate_mm_s                  100              # xÖáfast homingËÙÂÊmm/second
+alpha_fast_homing_rate_mm_s                  100              # xè½´fast homingé€Ÿç‡mm/second
 
 alpha_slow_homing_rate_mm_s                  20               # Alpha tower slow homing feedrate in mm/second
 
@@ -365,7 +365,7 @@ gamma_trim                                    0                # Software trim f
 
 # See http://smoothieware.org/zprobe
 
-zprobe.enable                                true            # Ê¹ÄÜzprobe
+zprobe.enable                                true            # ä½¿èƒ½zprobe
 
 zprobe.probe_pin                             1.29!^          # Pin probe is attached to, if NC remove the !
 
@@ -395,9 +395,9 @@ zprobe.probe_height                          10               # How much above b
 
 # Example for the delta grid leveling strategy
 
-# leveling-strategy.delta-grid.enable               false     # Ê¹ÄÜÍø¸ñµ÷Æ½
-# leveling-strategy.delta-grid.radius               100      # µ÷Æ½µÄ°ë¾¶
-# leveling-strategy.delta-grid.size                 5 	   # µ÷Æ½µÄÍø¸ñÊı£¨±ØĞëÎªÆæÊı£©
+# leveling-strategy.delta-grid.enable               false     # ä½¿èƒ½ç½‘æ ¼è°ƒå¹³
+# leveling-strategy.delta-grid.radius               100      # è°ƒå¹³çš„åŠå¾„
+# leveling-strategy.delta-grid.size                 5 	   # è°ƒå¹³çš„ç½‘æ ¼æ•°ï¼ˆå¿…é¡»ä¸ºå¥‡æ•°ï¼‰
 # leveling-strategy.delta-grid.probe_offsets        0,0,-0.2    # 
 # leveling-strategy.delta-grid.save                 true    # 
 # leveling-strategy.delta-grid.initial_height       10       # 
@@ -419,11 +419,11 @@ leveling-strategy.three-point-leveling.save_plane	false
 
 # Please find your panel on the wiki and copy/paste the right configuration here
 
-panel.enable                                 false             # Ê¹ÄÜÏÔÊ¾ÆÁÉèÖÃ
+panel.enable                                 false             # ä½¿èƒ½æ˜¾ç¤ºå±è®¾ç½®
 
 
 
-panel.lcd                                   reprap_discount_glcd     #ÏÔÊ¾ÆÁÀàĞÍ
+panel.lcd                                   reprap_discount_glcd     #æ˜¾ç¤ºå±ç±»å‹
 
 panel.spi_channel                           0                 # SPI channel to use  ; GLCD EXP1 Pins 3,5 (MOSI, SCLK)
 

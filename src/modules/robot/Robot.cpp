@@ -25,6 +25,7 @@
 #include "arm_solutions/CoreXZSolution.h"
 #include "arm_solutions/MorganSCARASolution.h"
 #include "arm_solutions/DarmSolution.h"
+#include "arm_solutions/PolargraphSolution.h"
 #include "StepTicker.h"
 #include "checksumm.h"
 #include "utils.h"
@@ -71,7 +72,8 @@
 #define  corexz_checksum                     CHECKSUM("corexz")
 #define  kossel_checksum                     CHECKSUM("kossel")
 #define  morgan_checksum                     CHECKSUM("morgan")
-#define  darm_checksum                     CHECKSUM("darm")
+#define  darm_checksum                       CHECKSUM("darm")
+#define  polargraph_checksum                 CHECKSUM("polargraph")
 
 // new-style actuator stuff
 #define  actuator_checksum                   CHEKCSUM("actuator")
@@ -149,6 +151,7 @@ void Robot::on_module_loaded()
 
 void Robot::load_config()
 {
+    DEBUG_PRINTF("load_config\n");
     // Arm solutions are used to convert positions in millimeters into position in steps for each stepper motor.
     // While for a cartesian arm solution, this is a simple multiplication, in other, less simple cases, there is some serious math to be done.
     // To make adding those solution easier, they have their own, separate object.
@@ -180,10 +183,14 @@ void Robot::load_config()
     } else if(solution_checksum == darm_checksum) {
         this->arm_solution = new DarmSolution(THEKERNEL->config);
 
+    } else if(solution_checksum == polargraph_checksum) {
+        DEBUG_PRINTF("arm_solution: polargraph_checksum\n");
+        this->arm_solution = new PolargraphSolution(THEKERNEL->config);
+
     } else {
         this->arm_solution = new CartesianSolution(THEKERNEL->config);
     }
-
+    
     this->feed_rate           = THEKERNEL->config->value(default_feed_rate_checksum   )->by_default(  100.0F)->as_number();
     this->seek_rate           = THEKERNEL->config->value(default_seek_rate_checksum   )->by_default(  100.0F)->as_number();
     this->mm_per_line_segment = THEKERNEL->config->value(mm_per_line_segment_checksum )->by_default(    0.0F)->as_number();

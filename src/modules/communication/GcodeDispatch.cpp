@@ -31,7 +31,7 @@
 #define panel_checksum             CHECKSUM("panel")
 
 // goes in Flash, list of Mxxx codes that are allowed when in Halted state
-static const int allowed_mcodes[]= {2,5,9,30,105,114,115,119,80,81,911,503,106,107}; // get temp, get pos, get endstops etc
+static const int allowed_mcodes[]= {2,5,9,30,105,114,115,119,80,81,911,503,106,107,111,110}; // get temp, get pos, get endstops etc
 static bool is_allowed_mcode(int m) {
     for (size_t i = 0; i < sizeof(allowed_mcodes)/sizeof(int); ++i) {
         if(allowed_mcodes[i] == m) return true;
@@ -154,6 +154,7 @@ try_again:
 
                     // Prepare gcode for dispatch
                     Gcode *gcode = new Gcode(single_command, new_message.stream);
+                    new_message.stream->printf("single_command:%s\n", single_command.c_str());
 
                     if(THEKERNEL->is_halted()) {
                         // we ignore all commands until M999, unless it is in the exceptions list (like M105 get temp)

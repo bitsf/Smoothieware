@@ -316,6 +316,7 @@ void Switch::on_gcode_received(void *argument)
                 if(v != this->sigmadelta_pin->get_pwm()){ // optimize... ignore if already set to the same pwm
                     // drain queue
                     THEKERNEL->conveyor->wait_for_idle();
+                    THEKERNEL->streams->printf("pwm %d\n", v);
                     this->sigmadelta_pin->pwm(v);
                     this->switch_state= (v > 0);
                 }
@@ -334,6 +335,7 @@ void Switch::on_gcode_received(void *argument)
                 float v = gcode->get_value('S');
                 if(v > 100) v= 100;
                 else if(v < 0) v= 0;
+                THEKERNEL->streams->printf("pwm %f\n", v);
                 this->pwm_pin->write(v/100.0F);
                 this->switch_state= (ROUND2DP(v) != ROUND2DP(this->switch_value));
             } else {
